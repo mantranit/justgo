@@ -240,7 +240,7 @@ $this->registerJs("
             <section role="tabpanel" aria-hidden="true" class="row content" id="panel2-3">
                 <div class="columns">
                     <?php if($model->slug !== null) { ?>
-                        <?= $form->field($model, 'slug')->textInput(['maxlength' => 128, 'disabled' => 'disabled']) ?>
+                        <?= $form->field($model, 'slug')->textInput(['maxlength' => 128]) ?>
                     <?php } ?>
                     <?= $form->field($model, 'seo_title')->textarea(['maxlength' => 128, 'rows' => 2]) ?>
                     <?= $form->field($model, 'seo_keyword')->textarea(['maxlength' => 128, 'rows' => 2]) ?>
