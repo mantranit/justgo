@@ -18,7 +18,7 @@ use common\models\Product;
 
 <article class="col-xs-12 col-sm-4 col-lg-3">
     <figure>
-        <a href="<?= Url::toRoute(['product/view', 'id' => $product->id, 'slug' => $product->slug]) ?>">
+        <a href="<?= Url::toRoute(['product/view', /*'id' => $product->id, */'slug' => $product->slug]) ?>">
             <?= UtilHelper::getPicture($product->image_id, 'thumbnail') ?>
         </a>
         <figcaption>
@@ -28,13 +28,13 @@ use common\models\Product;
         </figcaption>
 
         <?php if($product->info_tech) { ?>
-            <a class="hover-info" href="<?= Url::toRoute(['product/view', 'id' => $product->id, 'slug' => $product->slug]) ?>">
+            <a class="hover-info" href="<?= Url::toRoute(['product/view', /*'id' => $product->id, */'slug' => $product->slug]) ?>">
                 <?= $product->info_tech ?>
             </a>
         <?php } ?>
     </figure>
     <h3>
-        <a href="<?= Url::toRoute(['product/view', 'id' => $product->id, 'slug' => $product->slug]) ?>">
+        <a href="<?= Url::toRoute(['product/view', /*'id' => $product->id, */'slug' => $product->slug]) ?>">
             <?= $product->name ?>
             <?php if($product->is_hot) { ?>
                 <span class="hot"></span>

@@ -26,8 +26,8 @@ return [
             'showScriptName' => false,
             'suffix' => '.html',
             'rules' => [
-                'san-pham-xem/<id:\d+>/<slug>' => 'product/view',
-                'san-pham/<id:\d+>/<slug>' => 'product/category',
+                'san-pham/<slug>' => 'product/view',
+                'danh-muc/<slug>' => 'product/category',
                 'san-pham/tag/<slug>' => 'product/tag',
                 'tin-tuc/<slug>' => 'news/view',
                 'tin-tuc/tag/<slug>' => 'news/tag',

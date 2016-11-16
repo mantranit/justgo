@@ -44,32 +44,6 @@ $this->registerMetaTag(['name' => 'description', 'content' => Config::findOne(['
                 <?php } ?>
             </div>
         </div>
-        <div class="module-content">
-            <header>
-                <h2 class="title">MÁY BỘ HP</h2>
-            </header>
-            <div class="content list">
-                <?php foreach ($hpList as $index => $product) { ?>
-                    <?= $this->render('../product/_item', [
-                        'index' => $index,
-                        'product' => $product,
-                    ]) ?>
-                <?php } ?>
-            </div>
-        </div>
-        <div class="module-content">
-            <header>
-                <h2 class="title">MÁY BỘ DELL</h2>
-            </header>
-            <div class="content list">
-                <?php foreach ($dellList as $index => $product) { ?>
-                    <?= $this->render('../product/_item', [
-                        'index' => $index,
-                        'product' => $product,
-                    ]) ?>
-                <?php } ?>
-            </div>
-        </div>
     </div>
 </div>
 

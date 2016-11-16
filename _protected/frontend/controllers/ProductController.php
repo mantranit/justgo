@@ -21,119 +21,134 @@ class ProductController extends FrontendController {
     /**
      * Displays a single Product model.
      *
-     * @param  integer $id
      * @param  string $slug
      * @return mixed
      */
-    public function actionView($id, $slug)
+    public function actionView($slug)
     {
-        $dataProvider = new FileSearch();
-        $pictures = $dataProvider->search(['product_id' => $id])->getModels();
+        $temp = Product::findOne(['slug' => $slug]);
 
-        $categories = Category::find()
-            ->innerJoin('tbl_product_category', 'tbl_product_category.category_id = tbl_category.id')
-            ->where(['tbl_category.deleted' => 0, 'tbl_product_category.deleted' => 0, 'tbl_product_category.product_id' => $id])
-            ->all();
-        $category = null;
-        if(count($categories) > 0) {
-            $flag = true;
-            foreach ($categories as $object) {
-                if($object->parent_id > 0) {
-                    $flag = false;
-                    $category = $object;
-                    break;
+        if($temp) {
+
+            $id = $temp->id;
+
+            $dataProvider = new FileSearch();
+            $pictures = $dataProvider->search(['product_id' => $id])->getModels();
+
+            $categories = Category::find()
+                ->innerJoin('tbl_product_category', 'tbl_product_category.category_id = tbl_category.id')
+                ->where(['tbl_category.deleted' => 0, 'tbl_product_category.deleted' => 0, 'tbl_product_category.product_id' => $id])
+                ->all();
+            $category = null;
+            if (count($categories) > 0) {
+                $flag = true;
+                foreach ($categories as $object) {
+                    if ($object->parent_id > 0) {
+                        $flag = false;
+                        $category = $object;
+                        break;
+                    }
+                }
+                if ($flag) {
+                    $category = $categories[0];
                 }
             }
-            if($flag) {
-                $category = $categories[0];
-            }
-        }
 
-        $relatedList = Product::find()
-            ->innerJoin('tbl_product_related', 'tbl_product_related.related_id = tbl_product.id')
-            ->where([
-                'tbl_product.activated' => 1,
-                'tbl_product.deleted' => 0,
-                'tbl_product.status' => Product::isShowing(),
-                'tbl_product_related.deleted' => 0,
-                'tbl_product_related.product_id' => $id
-            ])
-            ->orderBy('sorting')->all();
-        if(count($relatedList) === 0) {
             $relatedList = Product::find()
-                ->innerJoin('tbl_product_category', 'tbl_product_category.product_id = tbl_product.id')
+                ->innerJoin('tbl_product_related', 'tbl_product_related.related_id = tbl_product.id')
                 ->where([
                     'tbl_product.activated' => 1,
                     'tbl_product.deleted' => 0,
                     'tbl_product.status' => Product::isShowing(),
-                    'tbl_product_category.deleted' => 0,
-                    'tbl_product_category.category_id' => $category->id
+                    'tbl_product_related.deleted' => 0,
+                    'tbl_product_related.product_id' => $id
                 ])
-                ->andWhere(['!=', 'tbl_product.id', $id])
-                ->orderBy('price DESC')->all();
-        }
-        $tags = Tag::find()
-            ->innerJoin('tbl_product_tag', 'tbl_product_tag.tag_id = tbl_tag.id')
-            ->where(['tbl_tag.deleted' => 0, 'tbl_product_tag.deleted' => 0, 'tbl_product_tag.product_id' => $id])
-            ->all();
+                ->orderBy('sorting')->all();
+            if (count($relatedList) === 0) {
+                $relatedList = Product::find()
+                    ->innerJoin('tbl_product_category', 'tbl_product_category.product_id = tbl_product.id')
+                    ->where([
+                        'tbl_product.activated' => 1,
+                        'tbl_product.deleted' => 0,
+                        'tbl_product.status' => Product::isShowing(),
+                        'tbl_product_category.deleted' => 0,
+                        'tbl_product_category.category_id' => $category->id
+                    ])
+                    ->andWhere(['!=', 'tbl_product.id', $id])
+                    ->orderBy('price DESC')->all();
+            }
+            $tags = Tag::find()
+                ->innerJoin('tbl_product_tag', 'tbl_product_tag.tag_id = tbl_tag.id')
+                ->where(['tbl_tag.deleted' => 0, 'tbl_product_tag.deleted' => 0, 'tbl_product_tag.product_id' => $id])
+                ->all();
 
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-            'pictures' => $pictures,
-            'tags' => $tags,
-            'category' => $category,
-            'relatedList' => $relatedList
-        ]);
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+                'pictures' => $pictures,
+                'tags' => $tags,
+                'category' => $category,
+                'relatedList' => $relatedList
+            ]);
+        } else {
+            return $this->render('error');
+        }
     }
 
     /**
      * Displays Products by category.
      *
-     * @param  integer $id
      * @param  string $slug
      * @return mixed
      */
-    public function actionCategory($id, $slug)
+    public function actionCategory($slug)
     {
-        $model = $this->findCategoryModel($id);
-        if($model->parent_id === 0) {
-            $query = Product::getProductByParentCategory($model->id);
-        }
-        else {
-            $query = Product::getProductByChildCategory($model->id);
-        }
-        $orderBy = Yii::$app->getRequest()->getQueryParam('orderby');
-        switch($orderBy) {
-            case 'gt':{
-                $query->orderBy('tbl_product.price ASC');
-                break;
-            }
-            case 'az':{
-                $query->orderBy('tbl_product.name ASC');
-                break;
-            }
-            case 'za':{
-                $query->orderBy('tbl_product.name DESC');
-                break;
-            }
-            case 'gg':
-            default: {
-                $query->orderBy('tbl_product.price DESC');
-                break;
-            }
-        }
+        $temp = Category::findOne(['slug' => $slug]);
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 12,
-            ],
-        ]);
+        if($temp) {
 
-        return $this->render('category', [
-            'model' => $model,
-            'dataProvider' => $dataProvider
-        ]);
+            $id = $temp->id;
+
+            $model = $this->findCategoryModel($id);
+            if ($model->parent_id === 0) {
+                $query = Product::getProductByParentCategory($model->id);
+            } else {
+                $query = Product::getProductByChildCategory($model->id);
+            }
+            $orderBy = Yii::$app->getRequest()->getQueryParam('orderby');
+            switch ($orderBy) {
+                case 'gt': {
+                    $query->orderBy('tbl_product.price ASC');
+                    break;
+                }
+                case 'az': {
+                    $query->orderBy('tbl_product.name ASC');
+                    break;
+                }
+                case 'za': {
+                    $query->orderBy('tbl_product.name DESC');
+                    break;
+                }
+                case 'gg':
+                default: {
+                    $query->orderBy('tbl_product.price DESC');
+                    break;
+                }
+            }
+
+            $dataProvider = new ActiveDataProvider([
+                'query' => $query,
+                'pagination' => [
+                    'pageSize' => 12,
+                ],
+            ]);
+
+            return $this->render('category', [
+                'model' => $model,
+                'dataProvider' => $dataProvider
+            ]);
+        } else {
+            return $this->render('error');
+        }
     }
 
     /**

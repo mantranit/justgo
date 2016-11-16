@@ -203,7 +203,7 @@ AppAsset::register($this);
                                 ?>
                                 <?php foreach ($news as $index => $item) { ?>
                                     <li>
-                                        <?= Html::a($item->name, ['news/view', 'id' => $item->id, 'slug' => $item->slug]) ?>
+                                        <?= Html::a($item->name, ['news/view', /*'id' => $item->id, */'slug' => $item->slug]) ?>
                                     </li>
                                 <?php } ?>
                             </ul>
@@ -211,7 +211,7 @@ AppAsset::register($this);
                         <div class="module fan-page">
 							<div class="fb-page" 
 									data-tabs="messages"
-									data-href="https://www.facebook.com/maytinhdebandongbo"
+									data-href="<?= Config::findOne(['key' => 'FACEBOOK_FANPAGE'])->value ?>"
 									data-hide-cover="false"></div>
                         </div>
                         <div class="module adv">
@@ -265,8 +265,8 @@ AppAsset::register($this);
             </div>
             <div class="copyright">
                 <div class="container">
-                    <p>&copy; 2015 Duy Tan Computer</p>
-                    <p>Powered by <a href="http://www.mantrantd.com" target="_blank">Man Tran</a></p>
+                    <p>&copy; 2016 JustGo.com.vn</p>
+                    <p>Designed &amp Powered by <a href="mailto:tranduyminhman@gmail.com">Man Tran</a></p>
                 </div>
             </div>
         </footer>

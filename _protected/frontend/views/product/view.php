@@ -36,7 +36,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => !empty($model->seo
         <ul class="breadcrumb">
             <li><a href="<?= Yii::$app->homeUrl ?>" class="homepage-link" title="Quay lại trang chủ"><i class="glyphicon glyphicon-home"></i> Trang chủ</a></li>
             <?php if(!empty($category)) { ?>
-                <li><a href="<?= Url::toRoute(['product/category', 'id' => $category->id, 'slug' => $category->slug]) ?>" title="<?= $category->name ?>"><?= $category->name ?></a></li>
+                <li><a href="<?= Url::toRoute(['product/category', /*'id' => $category->id, */'slug' => $category->slug]) ?>" title="<?= $category->name ?>"><?= $category->name ?></a></li>
             <?php } ?>
             <li><span class="page-title"><?= $model->name ?></span></li>
         </ul>
@@ -155,7 +155,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => !empty($model->seo
                         <div class="widget-title" id="comment">
                             <header><h2>Ý kiến khách hàng</h2></header>
                             <div class="product-content">
-                                <div class="fb-comments" data-width="100%" data-href="<?= Url::toRoute(['product/view', 'id' => $model->id, 'slug' => $model->slug], true) ?>"></div>
+                                <div class="fb-comments" data-width="100%" data-href="<?= Url::toRoute(['product/view', /*'id' => $model->id, */'slug' => $model->slug], true) ?>"></div>
                             </div>
                         </div>
                         <div class="widget-title" id="related">

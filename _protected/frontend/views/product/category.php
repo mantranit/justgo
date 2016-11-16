@@ -27,7 +27,7 @@ $this->registerMetaTag(['name' => 'description', 'content' => !empty($model->seo
         <ul class="breadcrumb">
             <li><a href="<?= Yii::$app->homeUrl ?>" class="homepage-link" title="Quay lại trang chủ"><i class="glyphicon glyphicon-home"></i> Trang chủ</a></li>
             <?php if($model->parent_id > 0) { ?>
-                <li><a href="<?= Url::toRoute(['product/category', 'id' => $model->parent_id, 'slug' => $model->parent->slug]) ?>" title="<?= $model->parent->name ?>"><?= $model->parent->name ?></a></li>
+                <li><a href="<?= Url::toRoute(['product/category', /*'id' => $model->parent_id, */'slug' => $model->parent->slug]) ?>" title="<?= $model->parent->name ?>"><?= $model->parent->name ?></a></li>
             <?php } ?>
             <li><span class="page-title"><?= $model->name ?></span></li>
         </ul>
@@ -47,10 +47,10 @@ $this->registerMetaTag(['name' => 'description', 'content' => !empty($model->seo
                             <span>Sắp xếp</span>
                             <?php $orderBy = Yii::$app->getRequest()->getQueryParam('orderby'); ?>
                             <select>
-                                <option value="<?= Url::toRoute(['product/category', 'id' => $model->id, 'slug' => $model->slug]) ?>">Giá giảm</option>
-                                <option <?= $orderBy === 'gt' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', 'id' => $model->id, 'slug' => $model->slug, 'orderby' => 'gt']) ?>">Giá tăng</option>
-                                <option <?= $orderBy === 'az' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', 'id' => $model->id, 'slug' => $model->slug, 'orderby' => 'az']) ?>">Tên A - Z</option>
-                                <option <?= $orderBy === 'za' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', 'id' => $model->id, 'slug' => $model->slug, 'orderby' => 'za']) ?>">Tên Z - A</option>
+                                <option value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug]) ?>">Giá giảm</option>
+                                <option <?= $orderBy === 'gt' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug, 'orderby' => 'gt']) ?>">Giá tăng</option>
+                                <option <?= $orderBy === 'az' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug, 'orderby' => 'az']) ?>">Tên A - Z</option>
+                                <option <?= $orderBy === 'za' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug, 'orderby' => 'za']) ?>">Tên Z - A</option>
                             </select>
                         </div>
                     <?php } ?>
