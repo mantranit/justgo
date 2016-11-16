@@ -44,9 +44,11 @@ use common\models\Product;
     <p class="price">
         <?php if($product->status === Product::STATUS_WAITING) { ?>
             <span>Hết hàng</span>
+        <?php } elseif($product->status === Product::STATUS_LIEN_HE) { ?>
+            <span>Liên hệ</span>
         <?php } else { ?>
-        <?= intval($product->price) === 0 ? '<span>Liên hệ</span>' : '<strong>' . CurrencyHelper::formatNumber($product->price) . '</strong>' ?>
-        &nbsp;&nbsp;
+            <strong><?= CurrencyHelper::formatNumber($product->price) ?></strong>
+            &nbsp;&nbsp;
         <?php if(!empty($product->price_string)) {
             $priceArray = Json::decode($product->price_string);
             if(intval($priceArray['month3']['old']) !== 0) { ?>
