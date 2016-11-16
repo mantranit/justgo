@@ -1,0 +1,33 @@
+@import "compass/css3";
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+select,
+textarea {
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    @include box-shadow(none);
+    @include transition-property(border-color, box-shadow);
+    @include transition-duration(.15s, .15s);
+    @include transition-timing-function(ease-in-out, ease-in-out);
+    margin:0;
+    &:focus{
+        border-color: #44B6AE;
+    }
+}

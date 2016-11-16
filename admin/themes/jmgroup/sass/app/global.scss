@@ -1,0 +1,268 @@
+@import "../vendor/foundation/functions";
+@import "../vendor/foundation/components/global";
+@import "../vendor/foundation/components/reveal";
+@import "partials/general";
+@import "partials/form";
+@import "partials/upload";
+@import "partials/tags";
+@import "partials/sortable";
+@import "partials/duplicated";
+@import "partials/dynatree";
+@import "partials/content";
+
+@import "modules/page-builder";
+@import "modules/watermask";
+@import "modules/fancybox";
+@import "compass/css3";
+
+body{
+    background-color: #e6e9f2;
+    .copyright{
+        color: #000;
+        background: none;
+    }
+}
+.site-wrapper {
+    .breadcrumbs{
+        margin: rem-calc(15) 0;
+        border-radius: rem-calc(5);
+        background: #fff;
+        >* a{
+            color: #0171B8;
+        }
+        .active{
+            color: #1cc7ff;
+        }
+    }
+}
+.row.wrapper{
+    width: 100%;
+    max-width: 100%;
+}
+.top-navigation {
+    .top-part-no-padding{
+        background: #0171B8;
+        border-bottom: 1px solid #e6e9f2;
+        min-height: rem-calc(70);
+    }
+    .top-menu{
+        padding-top: rem-calc(10);
+        padding-bottom: rem-calc(10);
+        background: #FFFFFF;
+        border-bottom: 1px solid #e6e9f2;
+        min-height: rem-calc(70);
+    }
+    .logo-bg{
+        img {
+            max-height: rem-calc(50);
+            margin: rem-calc(9) 0;
+        }
+        a{
+            font-size: 2rem;
+            margin: rem-calc(10) 0 0;
+            color: #fff;
+            float: right;
+            &:hover{
+                color: #B9C2DB;
+            }
+        }
+    }
+    .top-search{
+        padding-top: rem-calc(6);
+        input{
+            @include border-radius(rem-calc(20));
+            padding: 0 rem-calc(15);
+        }
+    }
+    .howdy{
+        text-align: right;
+        line-height: rem-calc(48);
+    }
+    .logout {
+        text-align: center;
+        a {
+            font-size: 2rem;
+            color: #0171B8;
+            &:hover {
+                color: #f16c65;
+            }
+        }
+    }
+}
+.side-nav {
+    padding: 0 0 rem-calc(15);
+    background: #fff;
+    margin: 0.9375rem 0 0.9375rem 0.9375rem;
+    @include border-radius(rem-calc(5));
+    .group-item {
+        color: #0171B8;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: rem-calc(20) 0 0 rem-calc(15);
+    }
+    li {
+        a:not(.button) {
+            line-height: rem-calc(30);
+            color: #333;
+        }
+        &.active > a:not(.button) {
+            border-left: rem-calc(3) solid #0171B8;
+            margin-left: rem-calc(-3);
+            background: #f2f6f9;
+        }
+        i{
+            margin-right: rem-calc(8);
+            font-size: rem-calc(16);
+        }
+        ul{
+            margin: 0;
+            list-style: none;
+            li{
+                margin: 0;
+                a{
+                    border-left: none !important;
+                    margin: 2px 0 0 !important;
+                    padding: 3px 0 3px 38px !important;
+                    &:hover {
+                        text-decoration: underline;
+                        color: #333 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.portlet{
+    padding: rem-calc(12) rem-calc(20) rem-calc(15);
+    background: #fff;
+    @include border-radius(rem-calc(5));
+    margin-top: rem-calc(15);
+    .portlet-title{
+        border-bottom: 1px solid #eee;
+        min-height: rem-calc(44);
+        @include clearfix();
+        .caption{
+            float: right;
+            font-size: rem-calc(18);
+            line-height: rem-calc(32);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #0171B8;
+        }
+        .action{
+            float: left;
+            a{
+                margin: 0 rem-calc(10) rem-calc(10) 0;
+            }
+        }
+    }
+    .portlet-body {
+        .has-padding {
+            padding-top: rem-calc(15);
+        }
+        .has-padding-full {
+            padding: rem-calc(15);
+        }
+    }
+    &.small{
+        border: 1px solid #0171B8;
+        padding: 0;
+        .portlet-title{
+            background: #3598dc;
+            min-height: initial;
+            .caption{
+                color: #fff;
+                font-size: rem-calc(14);
+                padding: rem-calc(2) rem-calc(10);
+                i{
+                    margin-right: rem-calc(5);
+                }
+            }
+        }
+
+    }
+}
+.table {
+    width: 100%;
+    tr {
+        th {
+            font-weight: 500;
+            color: #008CBA;
+            .asc:after, .desc:after {
+                color: #0171B8;
+                font-family: FontAwesome;
+                margin-left: rem-calc(5);
+            }
+            .asc:after {
+                content: "\f106";
+            }
+            .desc:after {
+                content: "\f107";
+            }
+        }
+        td{
+            vertical-align: top;
+
+        }
+    }
+    .fa{
+        font-size: rem-calc(16);
+        margin: 0 rem-calc(5);
+        &.fa-eye{
+            color: #a0d3e8;
+        }
+        &.fa-pencil-square-o{
+            color: #008CBA;
+        }
+        &.fa-trash-o{
+            color: #e7e7e7;
+        }
+    }
+    input[type='number']{
+        width: 60px;
+    }
+}
+.summary{
+    font-size: rem-calc(13);
+}
+.form-group{
+    margin-bottom: rem-calc(15);
+    position: relative;
+    &.has-error{
+        .form-control{
+            border-color: red;
+        }
+    }
+    .control-label{
+        margin-bottom: rem-calc(3);
+    }
+    .help-block{
+        color: red;
+        font-size: 12px;
+        margin: 5px 0 0;
+        &:empty{
+            display: none;
+        }
+    }
+}
+#gallery-application{
+    overflow: auto;
+    padding: rem-calc(10) 0;
+    label{
+        float: left;
+        width: 49%;
+    }
+}
+.user-form table tr td{
+    padding: 0;
+    .input-group{
+        position: relative;
+        padding-right: rem-calc(10);
+        .input-group-addon{
+            position: absolute;
+            right: rem-calc(20);
+            top: rem-calc(10);
+            z-index: 1;
+        }
+    }
+}

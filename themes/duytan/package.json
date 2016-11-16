@@ -1,0 +1,13 @@
+{
+  "name": "artex",
+  "description": "Graphic design and online marketing consulting",
+  "version": "0.1.0",
+  "homepage": "http://www.mantrantd.com",
+  "author": "Man Tran <tranduyminhman@gmail.com> (http://www.mantrantd.com/)",
+  "dependencies": {
+    "gulp": "*",
+    "gulp-compass": "*",
+    "gulp-minify-css": "*",
+    "gulp-watch": "*"
+  }
+}

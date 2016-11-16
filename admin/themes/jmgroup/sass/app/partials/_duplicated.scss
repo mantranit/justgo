@@ -1,0 +1,16 @@
+.field-content-name, .field-category-name, .field-product-name, .field-gallery-name, .field-tag-name{
+    position: relative;
+    &:after{
+        position: absolute;
+        bottom: 7px;
+        right: 9px;
+        //content: '\f00c';
+        font-family: FontAwesome;
+        color: #0171B8;
+    }
+    &.duplicated:after{
+        content: "\f071";
+        color: greenyellow;
+
+    }
+}

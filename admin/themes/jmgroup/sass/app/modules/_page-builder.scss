@@ -1,0 +1,78 @@
+$height-controls: 30px;
+$min-height-row: 100px;
+
+.page-builder{
+    background: #fcfcfc;
+    position: relative;
+    padding-bottom: $height-controls;
+    .controls{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: $height-controls;
+        background: #e8e8e8;
+        text-align: center;
+        a{
+            display: inline-block;
+            padding: 5px;
+            margin: 0 10px;
+        }
+    }
+    .pb-row{
+        position: relative;
+        margin-top: $height-controls + 10;
+        border: 1px solid #e8e8e8;
+        padding: 10px 5px;
+        @include clearfix;
+        > .controls{
+            bottom: auto;
+            top: -$height-controls;
+            width: auto;
+        }
+        .pb-column{
+            .pb-column-content{
+                position: relative;
+                padding: 10px 10px $height-controls + 10;
+                margin: 0 5px;
+                min-height: $min-height-row;
+                background: url(../images/bg-e-column.jpg);
+            }
+        }
+        .pb-col{
+            float: left;
+        }
+    }
+}
+
+.reveal-modal .row{
+    margin-bottom: 12px;
+}
+
+.portlet-mini{
+    background: #fff;
+    padding: 10px;
+    .portlet-mini-header{
+        border-bottom: 1px solid #cccccc;
+        @include clearfix;
+        .portlet-mini-title{
+            float: left;
+        }
+        .portlet-mini-controls{
+            float: right;
+        }
+    }
+    .portlet-mini-body{
+        label{
+            margin: 20px;
+        }
+    }
+}
+
+#content-using_page_builder{
+    @include clearfix;
+    label {
+        float: left;
+        padding: 10px 30px 0 0;
+    }
+}

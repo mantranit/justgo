@@ -1,0 +1,29 @@
+.scrolling-container{
+    padding-left: 0;
+    position: relative;
+    .scrolling-content{
+        display: none;
+        @include border-radius(5px);
+        @include background-image(linear-gradient(#FFFFFF, #EDEDED));
+        border: 1px solid #E4E4E4;
+        position: absolute;
+        top: 0;
+        z-index: 110;
+        padding: 0;
+        li{
+            padding: 14px 0;
+            font-size: 13px;
+            a{
+                display: block;
+                text-decoration: none;
+                padding: 4px 10px;
+                @include border-radius(20px);
+                &.active{
+                    @include background-image(linear-gradient(#6C6C6C, #8D8D8D 10%, #AFAFAF));
+                    color: #ffffff;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

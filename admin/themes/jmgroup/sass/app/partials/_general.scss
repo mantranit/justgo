@@ -1,0 +1,46 @@
+@import "compass/utilities/general";
+body{
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: 300;
+}
+.copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-top: 8px;
+    color: #fff;
+}
+.tabs-content {
+    .content {
+        .tabs {
+            border-top: 1px solid #EFEFEF;
+        }
+    }
+}
+.cke_reset_all {
+    textarea, input[type="text"], input[type="password"]{
+        height: auto;
+    }
+}
+
+.product-search{
+    @include clearfix;
+    padding-top: 20px;
+    label{
+        display: none;
+    }
+    input{
+        width: 300px;
+    }
+    select{
+        width: 200px;
+    }
+    button{
+        padding: 8px 20px;
+        color: #fff;
+    }
+    .form-group{
+        float: left;
+        margin-right: 10px;
+    }
+}

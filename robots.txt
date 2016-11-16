@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /_protected/
+Allow: /
+Sitemap: http://justgo.com.vn/sitemap.xml

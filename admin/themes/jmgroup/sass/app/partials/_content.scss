@@ -1,0 +1,50 @@
+.support-config{
+    margin: 0;
+    list-style: none;
+    li{
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+        height: 153px;
+    }
+    .sortable-placeholder{
+        border: 1px dashed #ccc;
+    }
+}
+.price-zone{
+    strong{
+        display: block;
+        text-align: right;
+        margin-top: 26px;
+    }
+}
+
+.general-info .action-buttons{
+    @include clearfix;
+    margin: 20px;
+}
+.feature-products .action-buttons{
+    @include clearfix;
+    margin: 20px 0 0;
+}
+.system {
+    .field-content-content,
+    .field-content-summary {
+        .control-label {
+            display: none;
+        }
+    }
+}
+.slide-content,
+.banner-content {
+    .image img {
+        height: 100px;
+        margin-right: 10px;
+    }
+    button{
+        padding: 5px 18px;
+        color: white;
+    }
+}
+.form-group-enabled{
+    margin-top: 20px;
+}
