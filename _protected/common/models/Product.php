@@ -36,6 +36,7 @@ class Product extends \yii\db\ActiveRecord
 {
     const STATUS_DRAFT = 'draft';
     const STATUS_WAITING = 'waiting';
+    const STATUS_LIEN_HE = 'lienhe';
     const STATUS_INSTOCK = 'instock';
 
     /**
@@ -114,7 +115,8 @@ class Product extends \yii\db\ActiveRecord
     {
         $statusArray = [
             self::STATUS_INSTOCK    => 'Còn hàng',
-            self::STATUS_WAITING   => 'Hết hàng',
+            self::STATUS_WAITING   => 'Cháy hàng',
+            self::STATUS_LIEN_HE   => 'Liên hệ',
             self::STATUS_DRAFT => 'Tạm'
         ];
 
@@ -130,14 +132,15 @@ class Product extends \yii\db\ActiveRecord
     {
         $statusArray = [
             self::STATUS_INSTOCK    => 'Còn hàng',
-            self::STATUS_WAITING   => 'Hết hàng',
+            self::STATUS_WAITING   => 'Cháy hàng',
+            self::STATUS_LIEN_HE   => 'Liên hệ',
         ];
 
         return $statusArray;
     }
 
     public static function isShowing(){
-        return [self::STATUS_INSTOCK, self::STATUS_WAITING];
+        return [self::STATUS_INSTOCK, self::STATUS_WAITING, self::STATUS_LIEN_HE];
     }
 
     /**
@@ -156,7 +159,11 @@ class Product extends \yii\db\ActiveRecord
         }
         elseif ($status === self::STATUS_WAITING)
         {
-            return "Hết hàng";
+            return "Cháy hàng";
+        }
+        elseif ($status === self::STATUS_LIEN_HE)
+        {
+            return "Liên hệ";
         }
         else
         {

@@ -228,28 +228,42 @@ img{
     }
 }
 
+.container{
+    width: auto !important;
+    max-width: 1170px;
+}
+
+.hover-info{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px;
+    text-decoration: none;
+    display: none;
+    color: white !important;
+
+    @include border-radius(10px);
+
+    *{
+        color: white !important;
+    }
+}
+
 .no-touch {
     .product-information .product-content.list,
     .module-content .content.list,
     .widget .content-widget.list {
         article figure:hover .hover-info {
             display: block;
+            text-decoration: none;
         }
 
     }
-    .hover-info {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 8px;
-        text-decoration: none;
-        display: none;
-        color: white !important;
-    }
+
 }
 
 /*------------------------------------*\

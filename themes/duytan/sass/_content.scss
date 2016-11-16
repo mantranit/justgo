@@ -39,26 +39,41 @@
     }
     .content{
         @include clearfix;
-        background-color: #FFF;
-        border-left: 1px solid #E4E4E4;
-        border-right: 1px solid #E4E4E4;
-        border-bottom: 1px solid #E4E4E4;
         border-top: 2px solid #D91C1B;
-        padding: 20px 10px;
-        font-size: 14px;
+
+        @media screen and (min-width: 640px) {
+            padding: 20px 10px;
+            font-size: 14px;
+            border-left: 1px solid #E4E4E4;
+            border-right: 1px solid #E4E4E4;
+            border-bottom: 1px solid #E4E4E4;
+            background-color: #FFF;
+        }
+
         &.list{
             padding: 10px 0 20px;
             article{
-                padding-top: 10px;
-                padding-bottom: 10px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-bottom: 20px;
                 line-height: 20px;
                 font-size: 14px;
+                border: 1px solid #CECECE;
+                background-color: white;
+                @include border-radius(10px);
+
+                @media screen and (min-width: 640px) {
+                    border: none;
+                }
+
                 figure{
                     text-align: center;
                     border-bottom: 1px dotted #CECECE;
                     padding-bottom: 7px;
                     margin-bottom: 7px;
-                    position: relative;
+                    @media screen and (min-width: 640px) {
+                        position: relative;
+                    }
                     img{
                         width: 185px;
                     }

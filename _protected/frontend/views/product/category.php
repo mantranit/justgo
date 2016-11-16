@@ -47,8 +47,8 @@ $this->registerMetaTag(['name' => 'description', 'content' => !empty($model->seo
                             <span>Sắp xếp</span>
                             <?php $orderBy = Yii::$app->getRequest()->getQueryParam('orderby'); ?>
                             <select>
-                                <option value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug]) ?>">Giá giảm</option>
-                                <option <?= $orderBy === 'gt' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug, 'orderby' => 'gt']) ?>">Giá tăng</option>
+                                <option value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug]) ?>">Giá tăng</option>
+                                <option <?= $orderBy === 'gg' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug, 'orderby' => 'gg']) ?>">Giá giảm</option>
                                 <option <?= $orderBy === 'az' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug, 'orderby' => 'az']) ?>">Tên A - Z</option>
                                 <option <?= $orderBy === 'za' ? 'selected="selected"' : '' ?> value="<?= Url::toRoute(['product/category', /*'id' => $model->id, */'slug' => $model->slug, 'orderby' => 'za']) ?>">Tên Z - A</option>
                             </select>
