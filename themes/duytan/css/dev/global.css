@@ -630,7 +630,7 @@ img { max-width: 100%; vertical-align: bottom; }
 .banner-ext { display: none; }
 
 /* line 105, ../../sass/global.scss */
-.site-wrapper .wrapper { background-color: #F7F7F7; padding-top: 32px; }
+.site-wrapper .wrapper { background-color: #fff; padding-top: 32px; }
 
 /* line 110, ../../sass/global.scss */
 .hot { background: url(../images/hot.gif) no-repeat center; display: inline-block; width: 35px; height: 11px; }

@@ -48,9 +48,8 @@ AppAsset::register($this);
         <div class="logo">
             <figure>
                 <a href="<?= Yii::$app->homeUrl ?>">
-                    <img src="<?= Yii::$app->view->theme->baseUrl ?>/images/duytan.png" alt="DUY TÂN Computer" />
+                    <img src="<?= Yii::$app->view->theme->baseUrl ?>/images/logo.png" alt="Just Go" />
                 </a>
-                <figcaption>DUY TÂN COMPUTER</figcaption>
             </figure>
         </div>
         <a class="close-under" href="javascript:void(0);"></a>
@@ -137,9 +136,8 @@ AppAsset::register($this);
                 <div class="logo">
                     <figure>
                         <a href="<?= Yii::$app->homeUrl ?>">
-                            <img src="<?= Yii::$app->view->theme->baseUrl ?>/images/duytan.png" alt="DUY TÂN Computer" />
+                            <img src="<?= Yii::$app->view->theme->baseUrl ?>/images/logo.png" alt="Just Go" />
                         </a>
-                        <figcaption>DUY TÂN COMPUTER</figcaption>
                     </figure>
                 </div>
                 <nav class="main-menu" role="navigation">
