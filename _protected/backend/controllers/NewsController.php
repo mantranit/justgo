@@ -66,7 +66,7 @@ class NewsController extends BackendController
      * @param string $name
      * @return mixed
      */
-    public function actionCreate($name)
+    public function actionCreate($name = 'name')
     {
         $model = new Content();
 
@@ -221,6 +221,11 @@ class NewsController extends BackendController
 
             if($model->updated_date === 0) {
                 $model->summary = '';
+            }
+
+            if($model->status === Content::STATUS_DRAFT && !$model->updated_date) {
+                $model->name = '';
+                $model->slug = '';
             }
             return $this->render('update', [
                 'model' => $model,

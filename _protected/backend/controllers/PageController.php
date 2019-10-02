@@ -61,7 +61,7 @@ class PageController extends BackendController
      * @param string $name
      * @return mixed
      */
-    public function actionCreate($name)
+    public function actionCreate($name = 'name')
     {
         $model = new Content();
 
@@ -115,6 +115,10 @@ class PageController extends BackendController
                 return $this->redirect(['update', 'id' => $model->id]);
             }
         } else {
+            if($model->status === Content::STATUS_DRAFT && !$model->updated_date) {
+                $model->name = '';
+                $model->slug = '';
+            }
             return $this->render('update', [
                 'model' => $model,
                 'contentElement' => new ContentElement()

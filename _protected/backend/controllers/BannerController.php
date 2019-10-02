@@ -131,6 +131,7 @@ class BannerController extends BackendController {
             }
             if($model->status === Content::STATUS_DRAFT && !$model->updated_date) {
                 $model->name = '';
+                $model->slug = '';
             }
             return $this->render('update', [
                 'model' => $model,
