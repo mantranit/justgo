@@ -101,6 +101,7 @@ class SiteController extends Controller
         $params = Yii::$app->request->queryParams;
         $params['ContentSearch'] = [
             'content_type' => Content::TYPE_SLIDER,
+            'status' => Content::STATUS_PUBLISHED,
             'show_in_menu' => 1
         ];
         $dataProvider = $searchModel->search($params);
@@ -132,8 +133,8 @@ class SiteController extends Controller
         ]);
 
         if(!empty($term)) {
-            //$query->andWhere(["OR", "name LIKE '%$term%'", "description LIKE '%$term%'", "general LIKE '%$term%'", "info_tech LIKE '%$term%'"]);
-            $query->andWhere('MATCH (name) AGAINST (:name IN BOOLEAN MODE) OR name LIKE :name2', [':name' => $term, ':name2' => '%'.$term.'%']);
+            $query->andWhere(["OR", "name LIKE '%$term%'", "description LIKE '%$term%'", "general LIKE '%$term%'", "info_tech LIKE '%$term%'"]);
+            // $query->andWhere('MATCH (name) AGAINST (:name IN BOOLEAN MODE) OR name LIKE :name2', [':name' => $term, ':name2' => '%'.$term.'%']);
         }
 
         $orderBy = Yii::$app->getRequest()->getQueryParam('orderby');
