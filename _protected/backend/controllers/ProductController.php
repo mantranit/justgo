@@ -6,6 +6,7 @@ use common\helpers\CurrencyHelper;
 use common\helpers\SlugHelper;
 use common\models\Category;
 use common\models\CategorySearch;
+use common\models\Content;
 use common\models\File;
 use common\models\FileSearch;
 use common\models\ProductCategory;
@@ -70,7 +71,7 @@ class ProductController extends BackendController
      * @param string $name
      * @return mixed
      */
-    public function actionCreate($name)
+    public function actionCreate($name = 'name')
     {
         $model = new Product();
 
@@ -332,6 +333,10 @@ class ProductController extends BackendController
                         'old' => CurrencyHelper::formatNumber(0)
                     ]
                 ]);
+            }
+
+            if($model->status === Content::STATUS_DRAFT && !$model->updated_date) {
+                $model->name = '';
             }
 
             return $this->render('update', [

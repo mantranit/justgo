@@ -10,7 +10,7 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=just_go',
+            'dsn' => 'mysql:host=localhost;dbname=justgo',
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',

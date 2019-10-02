@@ -57,21 +57,25 @@ class ConfigController extends BackendController
      */
     public function actionFeatured() {
         if(isset(Yii::$app->request->post()['ArrangementProduct'])) {
-            $idList = explode(',', Yii::$app->request->post()['ArrangementProduct']);
-            foreach ($idList as $index => $id) {
-                $arrangementObject = Arrangement::findOne(['content_id' => $id, 'content_type' => Arrangement::TYPE_PRODUCT]);
-                if($arrangementObject) {
-                    $arrangementObject->deleted = 0;
-                    $arrangementObject->sorting = $index + 1;
+            $arrangementProduct = Yii::$app->request->post()['ArrangementProduct'];
+            $idList = explode(',', $arrangementProduct);
+            if($arrangementProduct && count($idList) > 0) {
+                foreach ($idList as $index => $id) {
+                    $arrangementObject = Arrangement::findOne(['content_id' => $id, 'content_type' => Arrangement::TYPE_PRODUCT]);
+                    if($arrangementObject) {
+                        $arrangementObject->deleted = 0;
+                        $arrangementObject->sorting = $index + 1;
+                    }
+                    else {
+                        $arrangementObject = new Arrangement();
+                        $arrangementObject->content_type = Arrangement::TYPE_PRODUCT;
+                        $arrangementObject->content_id = $id;
+                        $arrangementObject->sorting = $index + 1;
+                    }
+                    $arrangementObject->save(false);
                 }
-                else {
-                    $arrangementObject = new Arrangement();
-                    $arrangementObject->content_type = Arrangement::TYPE_PRODUCT;
-                    $arrangementObject->content_id = $id;
-                    $arrangementObject->sorting = $index + 1;
-                }
-                $arrangementObject->save(false);
             }
+            
             $arrangementObjects = Arrangement::findAll(['content_type'=>Arrangement::TYPE_PRODUCT]);
             foreach ($arrangementObjects as $object) {
                 if(!in_array($object->content_id, $idList)){
@@ -79,6 +83,7 @@ class ConfigController extends BackendController
                     $object->save(false);
                 }
             }
+            
             $this->redirect('featured');
         }
         else {
