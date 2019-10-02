@@ -73,7 +73,7 @@ class SliderController extends BackendController {
      * @param string $name
      * @return mixed
      */
-    public function actionCreate($name = 'name')
+    public function actionCreate($name = '[name]')
     {
         $model = new Content();
 

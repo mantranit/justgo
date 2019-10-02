@@ -215,7 +215,7 @@ if(!isset($role['admin'])) {
 //
 //        }
 
-        $(document).foundation();
+        // $(document).foundation();
     ");
 
     ?>
