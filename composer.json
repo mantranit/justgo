@@ -13,12 +13,12 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "^2.0",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "nenad/yii2-password-strength": "*",
+        "yiisoft/yii2-swiftmailer": "*",
+        "nenad/yii2-password-strength": "^2.3",
         "mihaildev/yii2-ckeditor": "*",
         "mihaildev/yii2-elfinder": "*",
         "dektrium/yii2-user": "*",
-        "yiisoft/yii2-imagine": "~2.0.0"
+        "yiisoft/yii2-imagine": "*"
     },
     "require-dev": {
         "codeception/codeception": "*",
