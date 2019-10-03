@@ -2,6 +2,5 @@
 /.sass-cache/
 /.idea/
 _protected/vendor
-.gitignore
 access.log
 error.log

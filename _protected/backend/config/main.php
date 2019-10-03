@@ -57,8 +57,8 @@ return [
         ],
         'view' => [
             'theme' => [
-                'pathMap' => ['@app/views' => '@webroot/admin/themes/jmgroup/views'],
-                'baseUrl' => '@web/themes/jmgroup',
+                'pathMap' => ['@app/views' => '@webroot/admin/themes/twenty_nineteen/views'],
+                'baseUrl' => '@web/themes/twenty_nineteen',
             ],
         ],
         'user' => [
