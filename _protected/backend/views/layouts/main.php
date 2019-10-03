@@ -178,7 +178,7 @@ if(!isset($role['admin'])) {
         <?php $this->endBody() ?>
     </div>
     <div class="copyright">
-        2015 &copy; <?= Yii::$app->name ?>.<br/>Powered by <?= Html::a('Man Tran', 'http://www.mantrantd.com', ['target' => '_blank']) ?>
+        2015 &copy; <?= Yii::$app->name ?>.<br/>Powered by <?= Html::a('Man Tran', 'http://www.mantran.net', ['target' => '_blank']) ?>
     </div>
     <?php
     $this->registerJs("

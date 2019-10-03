@@ -1,5 +1,7 @@
 /node_modules/
 /.sass-cache/
 /.idea/
-vendor
-./*.log
+_protected/vendor
+.gitignore
+access.log
+error.log

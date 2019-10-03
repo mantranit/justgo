@@ -29,12 +29,12 @@ class AppAsset extends AssetBundle
     
     public $css = [
         'css/font-awesome.min.css',
-        'css/foundation.min.css',
+        // 'css/foundation.min.css',
         'css/global.min.css',
 
     ];
     public $js = [
-        'js/vendor/foundation.min.js',
+        // 'js/vendor/foundation.min.js',
 
     ];
     
