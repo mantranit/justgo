@@ -2,5 +2,4 @@
 /.sass-cache/
 /.idea/
 _protected/vendor
-access.log
-error.log
+*.log
